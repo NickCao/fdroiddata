@@ -1,0 +1,24 @@
+name: org.mozilla.fennec_fdroid
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+
+          docker run -i registry.gitlab.com/fdroid/fdroidserver:buildserver sudo -i -u vagrant bash -s <<EOT
+            sdkmanager platform-tools
+
+            git clone --depth 1 https://github.com/NickCao/fdroidserver.git
+            git clone --depth 1 https://github.com/NickCao/fdroiddata.git
+
+            cd fdroiddata
+
+            export PYTHONPATH=\${fdroidserver}/examples
+            export APPID=org.mozilla.fennec_fdroid:1092020
+            \${fdroidserver}/fdroid fetchsrclibs --verbose \${APPID}
+            \${fdroidserver}/fdroid build --on-server --verbose \${APPID}
+          EOT
