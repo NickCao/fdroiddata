@@ -12660,7 +12660,7 @@ Builds:
       - FirefoxAndroid@components-v109.2.0
       - MozAndroidComponentsAS@v107.0.2
       - MozAppServices@v96.1.3
-      - MozBuild@662f7e3e4dbc953bf62ea63c604ddbb7dc43e462
+      - MozBuild@95d131f7e493c0c9f05122b0f8e6fc7157fdc012
       - MozFennec@FIREFOX_109_0_1_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.2.0
